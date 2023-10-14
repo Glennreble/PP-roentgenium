@@ -18,10 +18,10 @@ window.addEventListener('keydown', e=>{
 
 const MAP = [
     [null,null,null,null,null,null,null],
-    [null,null,null,null,null,null,null],
+    [null,null,null,'ach',null,null,null],
     [null,null,'stats','opt','cs','rp',null],
     [null,null,'auto','g','pc','gh','fd'],
-    [null,null,null,'p','chal','as',null],
+    [null,null,'flow','p','chal','as','dec'],
     [null,null,null,null,null,null,null],
     [null,null,null,null,null,null,null],
 ]
@@ -54,8 +54,11 @@ const MAP_NAMES = {
     get 'auto'() { return player.planetoid.active ? `Ring Form` : `Automation` },
     'opt': `Options`,
     'stats': `Statistics`,
+    'flow': `Flower Shop`,
+    'ach': `Achievements`,
     'cs': `Constellation`,
     'chal': `Challenge`,
+    'dec': `Decelerator`,
     get 'fd'() { return player.decel ? `Fundry` : `Foundry` },
     'as': `Special Factory`,
     get 'gh'() { return player.decel ? `Grass-Skip` : player.recel ? `Grass Jump` : `Grasshop` },
