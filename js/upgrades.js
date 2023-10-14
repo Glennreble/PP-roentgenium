@@ -46,7 +46,7 @@ const UPGS = {
 
         ctn: [
             {
-                max: 1000,
+                max: 10000,
 
                 title: "Grass Value",
                 desc: `Increase Grass gain by <b class="green">1</b> per level.<br>This effect is <b class="green">doubled</b> every <b class="yellow">25</b> levels.`,
@@ -64,7 +64,7 @@ const UPGS = {
                 },
                 effDesc: x => x.format()+"x",
             },{
-                max: 1000,
+                max: 2000,
 
                 title: "More Grass",
                 desc: `Increase grass cap by <b class="green">1</b> per level.`,
@@ -82,7 +82,7 @@ const UPGS = {
                 },
                 effDesc: x => "+"+format(x,0),
             },{
-                max: 250,
+                max: 600,
 
                 title: "Grow Speed",
                 desc: `Increase grass grow speed by <b class="green">10%</b> per level.`,
@@ -100,7 +100,7 @@ const UPGS = {
                 },
                 effDesc: x => format(x)+"x",
             },{
-                max: 1000,
+                max: 10000,
 
                 title: "XP",
                 desc: `Increase experience (XP) gained by <b class="green">1</b> per level.<br>This effect is <b class="green">doubled</b> every <b class="yellow">25</b> levels.`,
@@ -118,7 +118,7 @@ const UPGS = {
                 },
                 effDesc: x => x.format()+"x",
             },{
-                max: 5,
+                max: 8,
 
                 title: "Range",
                 desc: `Increase grass cut range by <b class="green">10</b> per level. Base is 50.`,
@@ -135,7 +135,25 @@ const UPGS = {
                     return x
                 },
                 effDesc: x => "+"+format(x,0),
-            },
+            },{
+		max: 2500,
+
+                title: "PP",
+                desc: `Increase prestige points gained by <b class="green">1</b> per level.<br>This effect is <b class="green">doubled</b> every <b class="yellow">25</b> levels.`,
+
+                res: "grass",
+                icon: ['Curr/Prestige'],
+                
+                cost: i => Decimal.pow(1.3,scale(E(i),1e6,2,0)).mul(1e3).ceil(),
+                bulk: i => i.div(1e10).max(1).log(1.3).scale(1e6,2,0,true).floor().add(1),
+
+                effect(i) {
+                    let x = Decimal.pow(2,Math.floor(i/25)).mul(i+1)
+
+                    return x
+                },
+                effDesc: x => x.format()+"x",
+	    },
         ],
     },
     perk: {
@@ -234,7 +252,7 @@ const UPGS = {
                 },
                 effDesc: x => x.format()+"x",
             },{
-                max: 5,
+                max: 6,
 
                 costOnce: true,
 
